@@ -32,12 +32,44 @@ export const GlobalProvider = (props) => {
     });
   };
 
+  const addMovieToWatched = (movieData) => {
+    dispatch({
+      type: "ADD_MOVIE_TO_WATCHED",
+      payload: movieData,
+    });
+  };
+
+  const removeMovieFromWatchlist = (id) => {
+    dispatch({
+      type: "REMOVE_MOVIE_FROM_WATCHLIST",
+      payload: id,
+    });
+  };
+
+  const moveToWatchlist = (movie) => {
+    dispatch({
+      type: "MOVE_TO_WATCHLIST",
+      payload: movie,
+    });
+  };
+
+  const removeMovieFromWatched = (id) => {
+    dispatch({
+      type: "REMOVE_MOVIE_FORM_WATCHED",
+      payload: id,
+    });
+  };
+
   return (
     <GlobalContext.Provider
       value={{
         watchlist: state.watchlist,
         watched: state.watched,
         addMovieToWatchlist,
+        removeMovieFromWatchlist,
+        addMovieToWatched,
+        moveToWatchlist,
+        removeMovieFromWatched,
       }}
     >
       {props.children}
